@@ -5,12 +5,12 @@ Tämän sovelluksen tarkoituksena on olla Moodle-tyylinen alusta, johon on mahdo
 kursseja, ja niihin on mahdollista rekisteröityä, ja niissä olevia materiaaleja käyttää opiskeluun.
 Sovellukseen tulee ainakin seuraavat ominaisuudet:
   Kaikille on mahdollista tehdä:
-  - sisään- ja uloskirjautuminen
+  - sisään- ja uloskirjautuminen //
   Opiskelijaksi kirjautunut pystyy tekemään seuraavia asioita:
   - kurssilistaus, kursseihin liittyminen
   - kurssien materiaalien lukeminen 
   - kurssien tehtävien ratkominen (monivalinta, tekstikenttävastaus)
-  - tietoa omista ratkaistuista tehtävistä
+  - tietoa omista ratkaistuista tehtävistä //
   Opettajaksi kirjautunut pystyy lisäksi tekemään seuraavia asioita:
   - luoda, muokata ja poistaa kursseja
   - lisätä kurssialueelle tehtäviä ja materiaalia
