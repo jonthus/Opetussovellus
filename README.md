@@ -1,4 +1,4 @@
-# Tietokantasovellus2021
+# Opetussovellus
 
 Tämän työn aiheena on Opetussovellus. 
 Tämän sovelluksen tarkoituksena on olla Moodle-tyylinen alusta, johon on mahdollista lisätä
