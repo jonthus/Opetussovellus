@@ -1,13 +1,7 @@
-CREATE TABLE Messages (
-    id SERIAL PRIMARY KEY,
-    content, TEXT
-);
-
 CREATE TABLE Users (
     id SERIAL PRIMARY KEY,
     name TEXT,
-    password TEXT,
-    role INTEGER
+    password TEXT
 );
 
 CREATE TABLE Courses (
