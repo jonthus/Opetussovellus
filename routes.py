@@ -2,7 +2,7 @@ from app import app
 from db import db
 from flask import Flask
 from flask import redirect, render_template, request, session
-import users
+import users, messages
 
 @app.route("/")
 def index():
