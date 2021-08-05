@@ -2,9 +2,7 @@ from app import app
 from db import db
 from flask import Flask
 from flask import redirect, render_template, request, session
-from flask_sqlalchemy import SQLAlchemy
-from os import getenv
-import users, courses, stats
+import users
 
 @app.route("/")
 def index():
