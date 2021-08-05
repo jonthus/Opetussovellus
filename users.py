@@ -3,7 +3,7 @@ from flask import abort, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
 import os
 
-def login(name, password):
+def login(username, password):
     sql = "SELECT password, id, role FROM users WHERE username=:username"
     result = db.session.execute(sql, {"username":username})
     user = result.fetchone()
