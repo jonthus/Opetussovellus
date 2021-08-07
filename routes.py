@@ -8,6 +8,35 @@ import users
 def index():
     return render_template("index.html")
 
+@app.route("/add", methods=["GET", "POST"])
+def add_course():
+    users.check_role(2)
+
+    if request.method == "GET":
+        return render_template("add.html")
+
+    if request.method == "POST":
+        users.check_csrf()
+        name = request.form["name"]
+        content = request.form["content"]
+        courses.add_course(name, content, users.user_id())
+        return redirect("/")
+
+@app.route("/remove", methods=["GET", "POST"])
+def remove_course():
+    users.check_role(2)
+
+    if request.method == "GET":
+        return redirect("/")
+
+    if request.method == "POST":
+        users.check_csrf()
+
+        if "course" in request.form:
+            course = request.form["course"]
+            courses.remove_course(course, users.user_id())
+        return redirect("/")
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "GET":
@@ -22,8 +51,8 @@ def register():
 
         if password1 != password2:
             return render_template("error.html", message="Salasanat ovat erit")
-
-        if users.register(username, password1):
+        role = request.form["role"]
+        if users.register(username, password1, role):
             return redirect("/")
         else:
             return render_template("error.html", message="Rekisteröinti epäonnistui")
