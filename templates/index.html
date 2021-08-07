@@ -1,21 +1,6 @@
-{% if session.username %}
-<p>Olet kirjautunut nimellä {{ session.username }}</p>
+{% if session.user_id %}
+<p>Olet kirjautunut sisään.</p>
 <a href="/logout">Kirjaudu ulos</a>
 {% else %}
-<form action="/login" method="POST">
-<p>Tunnus:<br>
-<input type="text" name="username"></p>
-<p>Salasana<br>
-<input type="password" name="password"></p>
-<input type="submit" value="Kirjaudu">
-</form>
+<a href="/login">Kirjaudu sisään</a>
 {% endif %}
-
-Viestien määrä: {{ count }}
-<hr>
-{% for message in messages %}
-{{ message.content }}
-<hr>
-{% endfor %}
-<a href="/new">Lähetä viesti</a>
-
