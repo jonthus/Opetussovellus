@@ -1,7 +1,8 @@
 CREATE TABLE Users (
     id SERIAL PRIMARY KEY,
     username TEXT UNIQUE,
-    password TEXT
+    password TEXT,
+    role INTEGER
 );
 
 CREATE TABLE Courses (
