@@ -10,3 +10,7 @@ CREATE TABLE Courses (
     name TEXT
 );
 
+CREATE TABLE Exercises (
+    id SERIAL PRIMARY KEY,
+    content TEXT
+);
