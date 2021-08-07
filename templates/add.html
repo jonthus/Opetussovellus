@@ -1,0 +1,17 @@
+{% block content %}
+
+<h2>Lisää kurssi</h2>
+<form action="/add" method="post">
+
+<p>Kurssin nimi<br>
+<input type="text" name="name"></p>
+
+<p>Kurssin harjoitukset<br>
+<textarea name="exercises" rows="8" cols="40">
+ababababa
+</textarea></p>
+<input type="submit" value="Lähetä">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+</form>
+
+{% endblock %}
