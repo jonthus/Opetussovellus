@@ -27,6 +27,7 @@ Tällä hetkellä sovelluksessa on toteutettuna seuraavat ominaisuudet:
 
 Sovellus on testattavissa osoitteessa:
 http://opetussovellus.herokuapp.com/
+Sovellusta voi tällä hetkellä testata parhaiten rekisteröitymällä opettajana, ja kokeilemalla lisätä ja poistaa kursseja.
 
 TO-DO:
 - Kurssien tehtävien lisääminen (opettajana)
