@@ -2,11 +2,19 @@ from app import app
 from db import db
 from flask import Flask
 from flask import redirect, render_template, request, session
-import users
+import users, courses
+
+@app.route("/course/<int:id>")
+def course(id):
+    sql = "SELECT name FROM courses WHERE id=:id"
+    result = db.session.execute(sql, {"id":id})
+    name = result.fetchall()
+    return render_template("course.html", id=id, name=name)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    list = courses.get_list()
+    return render_template("index.html", courses=list)
 
 @app.route("/add", methods=["GET", "POST"])
 def add_course():
@@ -18,8 +26,8 @@ def add_course():
     if request.method == "POST":
         users.check_csrf()
         name = request.form["name"]
-        content = request.form["content"]
-        courses.add_course(name, content, users.user_id())
+
+    if courses.add_course(name):
         return redirect("/")
 
 @app.route("/remove", methods=["GET", "POST"])
@@ -27,14 +35,12 @@ def remove_course():
     users.check_role(2)
 
     if request.method == "GET":
-        return redirect("/")
+        return render_template("remove.html")
 
     if request.method == "POST":
         users.check_csrf()
-
-        if "course" in request.form:
-            course = request.form["course"]
-            courses.remove_course(course, users.user_id())
+        course = request.form["name"]
+    if courses.remove_course(course):
         return redirect("/")
 
 @app.route("/register", methods=["GET", "POST"])
