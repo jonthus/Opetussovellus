@@ -16,3 +16,14 @@ Sovellukseen tulee ainakin seuraavat ominaisuudet:
   - luoda, muokata ja poistaa kursseja
   - lisätä kurssialueelle tehtäviä ja materiaalia
   - näkemään opiskelijoiden tiedot ja heidän ratkaistut tehtävät
+
+8.8.2021:
+Tällä hetkellä sovelluksessa on toteutettuna seuraavat ominaisuudet:
+- Sisään- ja uloskirjautuminen
+- Rekisteröityminen
+- Kurssien lisääminen (opettajana)
+- Kurssien poistaminen (opettajana)
+- Kurssien katseleminen
+
+Sovellus on tarkasteltavissa osoitteessa:
+http://opetussovellus.herokuapp.com/
