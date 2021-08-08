@@ -25,5 +25,11 @@ Tällä hetkellä sovelluksessa on toteutettuna seuraavat ominaisuudet:
 - Kurssien poistaminen (opettajana)
 - Kurssien katseleminen
 
-Sovellus on tarkasteltavissa osoitteessa:
+Sovellus on testattavissa osoitteessa:
 http://opetussovellus.herokuapp.com/
+
+TO-DO:
+- Kurssien tehtävien lisääminen (opettajana)
+- Kursseille liittyminen (opiskelijana)
+- Tehtävien ratkaiseminen
+- Tiedot ratkaistuista tehtävistä
