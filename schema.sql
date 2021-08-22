@@ -23,8 +23,8 @@ CREATE TABLE Exercises (
 CREATE TABLE Signups (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
-    time TIMESTAMP
-    course_id INTEGER REFERENCES courses 
+    time TIMESTAMP,
+    course_id INTEGER REFERENCES courses
 );
 
 CREATE TABLE Answers (
