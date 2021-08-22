@@ -16,3 +16,8 @@ def remove_course(name):
     db.session.execute(sql, {"name":name})
     db.session.commit()
     return 'OK'
+
+def get_name(course_id):
+    sql = "SELECT name FROM courses WHERE id=:id"
+    name = db.session.execute(sql, {"id":course_id})
+    return name
