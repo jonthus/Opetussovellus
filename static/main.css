@@ -1,0 +1,17 @@
+body {
+    margin: auto;
+    max-width: 45em;
+    font-family: "Lucida Console", "Courier New", monospace;
+    background-color: #F0F0F0;
+}
+
+li {
+    display: inline;
+}
+
+.navbar {
+    background-color: red;
+    border-style: double;
+    border-color: blue;
+}
+
