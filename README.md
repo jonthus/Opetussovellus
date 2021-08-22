@@ -34,3 +34,28 @@ TO-DO:
 - Kursseille liittyminen (opiskelijana)
 - Tehtävien ratkaiseminen
 - Tiedot ratkaistuista tehtävistä
+
+22.8.2021:
+Tällä hetkellä sovelluksessa on toteutettuna seuraavat ominaisuudet:
+- Sisään- ja uloskirjautuminen
+- Rekisteröityminen
+- Kurssien lisääminen (opettajana)
+- Kurssien poistaminen (opettajana)
+- Kurssien katseleminen
+
+- Tehtävien lisääminen (opettajana)
+- Tehtävien poistaminen (opettajana)
+- Tehtävien ratkaiseminen
+- Kursseille liittyminen
+
+Sovellus on testattavissa osoitteessa:
+http://opetussovellus.herokuapp.com/
+Sovellusta voi tällä hetkellä parhaiten testata rekisteröitymällä opettajana, ja kokeilemalla lisätä ja poistaa kursseja, sekä
+lisätä ja poistaa tehtäviä eri kursseille. Tällä hetkellä opettajana voi myös ratkaista tehtäviä, ja saada tiedon onko vastaus oikein.
+Profiilisivun tiedot ja sovelluksen ulkoasu ovat vielä kesken.
+
+TO-DO:
+- Profiilisivun korjaus
+- Profiilisivulle datapointtien lisääminen (esim. %-oikeat vastaukset, kurssilistaus) 
+- Sovelluksen ulkoasun korjaus
+- Tehtävien ratkaisu vain oppilaille
