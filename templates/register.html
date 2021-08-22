@@ -1,8 +1,10 @@
+{% extends 'layout.html' %}
+
 {% block content %}
 
 <h2>Rekisteröinti</h2>
 
-<form action="/register" method="post">
+<form action="/register" method="post" onsubmit="return check(this)">
 Tunnus: <br><input type="text" name="username" minlength="1" maxlength="20">
 <p>
 Salasana: <br><input type="password" name="password1">
@@ -22,3 +24,25 @@ Käyttäjärooli:
 <a href="/login">Palaa takaisin</a>
 
 {% endblock %}
+
+<script>
+function check(form) {
+    if (form.username.value.length > 20 {
+        alert("Käyttäjätunnus on liian pitkä.");
+        return false;
+    }
+    if  form.username.value.length < 1 {
+        alert=("Käyttäjätunnus on liian lyhyt.")
+        return false;
+    }
+    if (form.password1.value.length > 20 {
+        alert("Salasana on liian pitkä.");
+        return false;
+    }
+    if (form.password1.value.length < 1) {
+        alert("Salasana on liian lyhyt");
+        return false;
+    }
+    return true;
+}
+</script>
