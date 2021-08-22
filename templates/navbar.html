@@ -1,0 +1,12 @@
+{% block navigation %}
+<ul class=navigation>
+  <li><a href="/">Etusivu</a></li>
+  <li><a href="/profile">Profiili</a></li>
+  {% if not session.user_id %}
+  <li><a href="/login">Kirjaudu sisään</a></li>
+  <li><a href="/register">Rekisteröidy</a></li>
+  {% else %}
+  <li><a href="/logout">Kirjaudu ulos</a></li>
+  {% endif %}
+</ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+
+{% extends 'layout.html' %}
+{% block content %}
+
+<h2>Profiili</h2>
+<p>Olet kirjautunut sisään käyttäjänä {{ session.user_name }}.</p>
+<p>Ratkaistut tehtävät: </p>
+{% for signup in signups %}
+<li>{{ signup.correct }}
+{% endfor %}
+
+
+<p>Kurssi-ilmottautumiset: </p>
+<ul class="listing">
+{% for signup in signups %}
+<li>{{ signup.course_id }}</a>
+{% endfor %}
+</ul>
+
+{% endblock %}

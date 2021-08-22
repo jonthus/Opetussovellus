@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<ul>
+    {% for exercise in exercises %}
+    <li>{{ exercise.name }} 
+    <br>
+    <li>{{ exercise.id }}
+    <li>{{ exercise.content }}
+    {% endfor %}
+</ul>
+<p>{{ exercises.id }}</p>
+<p>{{ exercise_id }}</p>
+
+<form action="/result" method="POST">
+        Vastaus:<br>
+        <input type="hidden" name="exercise_id" value="{{ exercise_id }}">
+        <input type="text" name="answer" rows="2" cols="40">
+        <input type="submit" value="Lähetä">
+</form>
+
+{% endblock %}
+
+

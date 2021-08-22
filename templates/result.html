@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+{% if correct == True %}
+<p>Oikea vastaus!</p>
+{% else %}
+<p>Väärä vastaus!</p>
+{% endif %}
+
+<a href="/exercise/{{ exercise_id }}">Palaa takaisin</a>
+
+{% endblock %}
+
