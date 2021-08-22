@@ -7,12 +7,30 @@ CREATE TABLE Users (
 
 CREATE TABLE Courses (
     id SERIAL PRIMARY KEY,
-    creator_id INTEGER REFERENCES users,
     name TEXT,
     visible INTEGER
 );
 
 CREATE TABLE Exercises (
     id SERIAL PRIMARY KEY,
-    content TEXT
+    name TEXT,
+    content TEXT,
+    correct TEXT,
+    course_id INTEGER REFERENCES courses,
+    visible INTEGER
+);
+
+CREATE TABLE Signups (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users,
+    time TIMESTAMP
+    course_id INTEGER REFERENCES courses 
+);
+
+CREATE TABLE Answers (
+    id SERIAL PRIMARY KEY,
+    correct INTEGER,
+    incorrect INTEGER,
+    exercise_id INTEGER REFERENCES exercises,
+    user_id INTEGER REFERENCES users
 );
