@@ -1,26 +1,24 @@
 
+{% extends 'layout.html' %}
+
 {% block content %}
 
 <h1>Etusivu</h1>
 
+
 {% if session.user_role == 2 %}
-<ul>
+<ul class="courses">
 <li> <a href="/add">Lisää kurssi</a>
 <li> <a href="/remove">Poista kurssi</a>
 </ul>
 {% endif %}
 
-<ul>
+<h2>Kurssilistaus</h2>
+
+<ul class="listing">
 {% for course in courses %}
 <li><a href="/course/{{ course.id }}">{{ course.name }}</a>
 {% endfor %}
 </ul>
-
-{% if session.user_id %}
-<p>Olet kirjautunut sisään.</p>
-<a href="/logout">Kirjaudu ulos</a>
-{% else %}
-<a href="/login">Kirjaudu sisään</a>
-{% endif %}
 
 {% endblock %}

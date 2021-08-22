@@ -1,5 +1,48 @@
+{% extends 'layout.html' %}
+
 {% block content %}
 
-<h2>Course {{ name }}</h2>
+{% if check == False %}
+
+<p>Ilmoittaudu kurssille tästä</p>
+<form action="/signup" method="POST">
+<input type="hidden" name="course_id" value="{{ course_id }}">
+<input type="submit" value="Ilmoittaudu">
+</form>
+{% else %}
+<p>Olet ilmoittautunut kurssille.</p>
+{% endif %} 
+
+{% if session.user_role == 2 %}
+<p>Lisää tästä kurssille uusia tehtäviä.</p>
+<p>Anna tehtävälle nimi, kysymys ja vastaus.</p>
+<form action="/add/{{course_id}}" method="POST">
+        Nimi: <br>
+        <input type="text" name="name" minlength="1" maxlength="20">
+        <br>
+        Kysymys:<br>
+        <textarea name="content" rows="2" cols="40"></textarea>
+        <br>
+        Vastaus: <br>
+        <input type="text" name="correct" minlength="1" maxlength="20">
+        <br>
+        <input type="submit" value="Lähetä">
+</form>
+</br>
+<p>Poista tästä kurssin tehtäviä antamalla niiden nimi.</p>
+<form action="/remove/{{course_id}}" method="POST">
+        Nimi: <br>
+        <input type="text" name="exercise_name" minlength="1" maxlength="20">
+        <br>
+        <input type="submit" value="Lähetä">
+</form>
+{% endif %}
+
+<h2>Tehtävälistaus</h2>
+<ul class="tehtavat">
+    {% for exercise in exercises %}
+    <li><a href="/exercise/{{ exercise.id }}">{{ exercise.name }}</a>
+    {% endfor %}
+</ul>
 
 {% endblock %}

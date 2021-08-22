@@ -1,5 +1,7 @@
-{% block content %}
 
+{% extends "layout.html" %}
+
+{% block content %}
 <h2>Lisää kurssi</h2>
 <form action="/add" method="post">
 
@@ -9,5 +11,11 @@
 <input type="submit" value="Lähetä">
 <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
+
+<ul class="listing">
+{% for course in courses %}
+<li><a href="/course/{{ course.id }}">{{ course.name }}</a>
+{% endfor %}
+</ul>
 
 {% endblock %}
