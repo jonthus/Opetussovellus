@@ -6,12 +6,9 @@
     {% for exercise in exercises %}
     <li>{{ exercise.name }} 
     <br>
-    <li>{{ exercise.id }}
     <li>{{ exercise.content }}
     {% endfor %}
 </ul>
-<p>{{ exercises.id }}</p>
-<p>{{ exercise_id }}</p>
 
 <form action="/result" method="POST">
         Vastaus:<br>

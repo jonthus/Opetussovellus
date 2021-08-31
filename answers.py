@@ -15,13 +15,11 @@ def append_correct(exercise_id, user_id):
     sql = "INSERT INTO answers (exercise_id, user_id, correct) VALUES (:exercise_id, :user_id, 1)"
     db.session.execute(sql, {"exercise_id":exercise_id, "user_id":user_id})
     db.session.commit()
-    return 'OK'
 
 def append_incorrect(exercise_id, user_id):
     sql = "INSERT INTO answers (exercise_id, user_id, incorrect) VALUES (:exercise_id, :user_id, 1)"
     db.session.execute(sql, {"exercise_id":exercise_id, "user_id":user_id})
     db.session.commit()
-    return 'OK'
 
 def count_correct(user_id):
     sql = "SELECT COUNT(*) FROM answers WHERE user_id=:user_id"

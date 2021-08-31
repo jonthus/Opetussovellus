@@ -1,12 +1,16 @@
 {% block navigation %}
-<ul class=navigation>
-  <li><a href="/">Etusivu</a></li>
-  <li><a href="/profile">Profiili</a></li>
+<div class="container">
+  <nav class="navbar navbar-expand-sm navbar-light">
+  <a class="navbar-brand" href='#'>Opetussovellus</a>
+<ul class="navbar-nav">
+  <li class="nav-item"><a href="/">Etusivu</a></li>
+  <li class="nav-item"><a href="/profile">Profiili</a></li>
   {% if not session.user_id %}
-  <li><a href="/login">Kirjaudu sisään</a></li>
-  <li><a href="/register">Rekisteröidy</a></li>
+  <li class="nav-item"><a href="/login">Kirjaudu sisään</a></li>
+  <li class="nav-item"><a href="/register">Rekisteröidy</a></li>
   {% else %}
-  <li><a href="/logout">Kirjaudu ulos</a></li>
+  <li class="nav-item"><a href="/logout">Kirjaudu ulos</a></li>
   {% endif %}
 </ul>
+</nav>
 {% endblock %}

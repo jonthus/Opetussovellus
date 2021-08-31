@@ -2,9 +2,10 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+<div class="row">
+<div class="col-8">
 
 <h1>Etusivu</h1>
-
 
 {% if session.user_role == 2 %}
 <ul class="courses">
@@ -12,6 +13,9 @@
 <li> <a href="/remove">Poista kurssi</a>
 </ul>
 {% endif %}
+
+</div>
+<div class="col-4">
 
 <h2>Kurssilistaus</h2>
 
@@ -21,4 +25,6 @@
 {% endfor %}
 </ul>
 
+</div>
+</div>
 {% endblock %}
