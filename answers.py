@@ -3,8 +3,10 @@ from db import db
 def check_answer(exercise_id, user_id, answer):
     sql = "SELECT correct FROM exercises WHERE id=:id"
     correct = db.session.execute(sql, {"id":exercise_id}).fetchone()
+    string_correct = str(correct).strip('(),')
+    fixed_correct = string_correct.replace("'", "")
 
-    if answer in correct:
+    if answer == fixed_correct:
         append_correct(exercise_id, user_id)
         return True
     else:
@@ -22,7 +24,7 @@ def append_incorrect(exercise_id, user_id):
     db.session.commit()
 
 def count_correct(user_id):
-    sql = "SELECT COUNT(*) FROM answers WHERE user_id=:user_id"
+    sql = "SELECT COUNT(correct) FROM answers WHERE user_id=:user_id"
     list = db.session.execute(sql, {"user_id":user_id}).fetchall()
     return list
 
