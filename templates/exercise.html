@@ -1,21 +1,44 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+{% if session.user_id %}
+{% if check_signup == True %}
 
-<ul>
+<div class="container">
+<div class="col-xs-2" align="center">
+<div class="col">
+<ul class="list-group">
     {% for exercise in exercises %}
-    <li>{{ exercise.name }} 
-    <br>
-    <li>{{ exercise.content }}
+    <li class="list-group-item">{{ exercise.name }} </li>
+    <li class="list-group-item">{{ exercise.content }} </li>
     {% endfor %}
 </ul>
+</div>
 
+<div class="col">
 <form action="/result" method="POST">
-        Vastaus:<br>
+        <label for="vastaus">Vastaus:</label>
         <input type="hidden" name="exercise_id" value="{{ exercise_id }}">
-        <input type="text" name="answer" rows="2" cols="40">
-        <input type="submit" value="Lähetä">
+        <input type="text" name="answer" class="form-control">
+        <input type="submit" class="btn btn-primary" value="Lähetä">
 </form>
+<a href="/course/{{ course_id }}">Palaa takaisin</a>
+</div>
+{% else %}
+<div class="container">
+<div class="col-xs-2" align="center">
+<p>Et voi vastata tehtäviin, jos et ole ilmoittautunut kurssille.</p>
+<a href="/course/{{ course_id }}">Palaa takaisin</a>
+{% endif %}
+{% else %}
+<div class="container">
+<div class="col-xs-2" align="center">
+<p>Rekisteröidy tai kirjaudu sisään vastataksesi tehtäviin.</p>
+{% endif %}
+
+</div>
+</div>
+
 
 {% endblock %}
 

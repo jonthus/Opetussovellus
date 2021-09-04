@@ -2,29 +2,30 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="row">
-<div class="col-8">
-
-<h1>Etusivu</h1>
-
-{% if session.user_role == 2 %}
-<ul class="courses">
-<li> <a href="/add">Lisää kurssi</a>
-<li> <a href="/remove">Poista kurssi</a>
-</ul>
+<div class="container">
+<h2>Etusivu</h2>
+{% if session.user_id %}
+<p>Tervetuloa Opetussovellukseen! Valitse kurssi aloittaaksesi.</p>
+{% else %}
+<p>Tervetuloa Opetussovellukseen! Rekisteröidy tai kirjaudu sisään aloittaaksesi.</p>
 {% endif %}
 
-</div>
-<div class="col-4">
 
+<div class="col-xs-1" align="center">
+{% if session.user_id %}
 <h2>Kurssilistaus</h2>
-
-<ul class="listing">
+<ul class="list-group">
 {% for course in courses %}
-<li><a href="/course/{{ course.id }}">{{ course.name }}</a>
+<li class="list-group-item"><a href="/course/{{ course.id }}">{{ course.name }}</a></li>
 {% endfor %}
 </ul>
-
-</div>
+{% endif %}
+  {% if session.user_role == 2 %}
+  <h2>Opettajan toiminnot</h2>
+  <ul class="list-group">
+    <li class="list-group-item"> <a href="/add">Lisää kurssi</a></li>
+    <li class="list-group-item"> <a href="/remove">Poista kurssi</a></li>
+  </ul>
+  {% endif %}
 </div>
 {% endblock %}

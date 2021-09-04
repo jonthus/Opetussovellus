@@ -1,14 +1,17 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
+<div class="container">
+<div class="col-xs-2" align="center">
 {% if correct == True %}
-<p>Oikea vastaus!</p>
+<h2>Oikea vastaus!</h2>
 {% else %}
-<p>Väärä vastaus!</p>
+<h2>Väärä vastaus!</h2>
 {% endif %}
 
 <a href="/exercise/{{ exercise_id }}">Palaa takaisin</a>
+</div>
+</div>
 
 {% endblock %}
 

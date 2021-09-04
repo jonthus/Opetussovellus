@@ -2,11 +2,11 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
-Virhe: {{ message }}
-{{ exercise_id }}
-{{ answer }}
-{{ user_id }}
-{{ correct }}
+<div class="container">
+<div class="col-xs-2" align="center">
+<p>Virhe: {{ message }}</p>
+<a href="/">Palaa etusivulle</a>
+</div>
+</div>
 
 {% endblock %}

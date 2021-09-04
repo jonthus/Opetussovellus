@@ -1,48 +1,74 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
-{% if check == False %}
-
-<p>Ilmoittaudu kurssille tästä</p>
-<form action="/signup" method="POST">
-<input type="hidden" name="course_id" value="{{ course_id }}">
-<input type="submit" value="Ilmoittaudu">
-</form>
-{% else %}
-<p>Olet ilmoittautunut kurssille.</p>
-{% endif %} 
-
-{% if session.user_role == 2 %}
-<p>Lisää tästä kurssille uusia tehtäviä.</p>
-<p>Anna tehtävälle nimi, kysymys ja vastaus.</p>
-<form action="/add/{{course_id}}" method="POST">
-        Nimi: <br>
-        <input type="text" name="name" minlength="1" maxlength="20">
-        <br>
-        Kysymys:<br>
-        <textarea name="content" rows="2" cols="40"></textarea>
-        <br>
-        Vastaus: <br>
-        <input type="text" name="correct" minlength="1" maxlength="20">
-        <br>
-        <input type="submit" value="Lähetä">
-</form>
-</br>
-<p>Poista tästä kurssin tehtäviä antamalla niiden nimi.</p>
-<form action="/remove/{{course_id}}" method="POST">
-        Nimi: <br>
-        <input type="text" name="exercise_name" minlength="1" maxlength="20">
-        <br>
-        <input type="submit" value="Lähetä">
-</form>
-{% endif %}
+{% if session.user_id %}
+<div class="container">
+<div class="col-xs-2" align="center">
+<h3>Tervetuloa kurssille {{ course_name }}!</h3>
 
 <h2>Tehtävälistaus</h2>
-<ul class="tehtavat">
+<ul class="list-group">
     {% for exercise in exercises %}
-    <li><a href="/exercise/{{ exercise.id }}">{{ exercise.name }}</a>
+    <li class="list-group-item"><a href="/exercise/{{ exercise.id }}">{{ exercise.name }}</a></li>
     {% endfor %}
 </ul>
 
+{% if session.user_role == 2 %}
+<div class="col">
+<h2>Opettajan toiminnot</h2>
+<h3>Tehtävien lisäys</h3>
+<p>Anna tehtävälle nimi, kysymys ja vastaus.</p>
+
+<form action="/add/{{course_id}}" method="POST">
+        <label for="tehtavanNimi">Tehtävän nimi:</label>
+        <input type="text" class="form-control" name="name" minlength="1" maxlength="20">
+        <label for="kysymys">Kysymys:</label>
+        <textarea name="content" class="form-control" rows="2" cols="40"></textarea>
+        <label for="vastaus">Vastaus:</label>
+        <input type="text" class="form-control" name="correct" minlength="1" maxlength="20">
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+        <input type="submit" class="btn btn-primary" value="Lähetä">
+</form>
+</div>
+<div class="col">
+<h3>Tehtävien poisto</h3>
+<p>Poista tästä kurssin tehtäviä antamalla niiden nimi.</p>
+<form action="/remove/{{course_id}}" method="POST">
+        <label for="tehtavanNimi">Tehtävän nimi:</label> 
+        <input type="text" class="form-control" name="exercise_name" minlength="1" maxlength="20">
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+        <input type="submit" class="btn btn-primary" value="Lähetä">
+</form>
+</div>
+{% endif %}
+
+<div class="col">
+<h3>Ilmoittautuminen</h3>
+{% if check == False %}
+{% if session.user_id %}
+<p>Ilmoittaudu kurssille tästä.</p>
+<form action="/signup" method="POST">
+<input type="hidden" name="course_id" value="{{ course_id }}">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+<input type="submit" class="btn btn-primary" value="Ilmoittaudu">
+</form>
+{% else %}
+<p>Et ole kirjautunut sisään.</p>
+{% endif %}
+{% else %}
+<p>Olet ilmoittautunut kurssille.</p>
+<form action="/removesignup" method="POST">
+<input type="hidden" name="course_id" value="{{ course_id }}">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+<input type="submit" class="btn btn-primary" value="Poista ilmoittautuminen">
+</form>
+{% endif %}
+</div>
+{% else %}
+<div class="container">
+<div class="col-xs-2" align="center">
+<p>Rekisteröidy tai kirjaudu sisään osallistuaksesi kurssille.</p>
+{% endif %}
+</div>
+</div>
 {% endblock %}

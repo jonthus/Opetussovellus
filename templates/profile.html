@@ -2,19 +2,33 @@
 {% extends 'layout.html' %}
 {% block content %}
 
+<div class="container">
+<div class="col-xs-1" align="center">
 <h2>Profiili</h2>
+{% if session.user_id %}
 <p>Olet kirjautunut sisään käyttäjänä {{ session.user_name }}.</p>
 <p>Ratkaistut tehtävät: </p>
-{% for signup in signups %}
-<li>{{ signup.correct }}
+
+<p>Oikeita vastauksia</p>
+{% for answer in correct %}
+<li class="list-group-item">{{ answer }}</li>
 {% endfor %}
 
+<p>Vääriä vastauksia</p>
+{% for answer in incorrect %}
+<li class="list-group-item">{{ answer }}</li>
+{% endfor %}
 
-<p>Kurssi-ilmottautumiset: </p>
-<ul class="listing">
+<p>Kurssi-ilmoittautumiset: </p>
+<ul class="list-group">
 {% for signup in signups %}
-<li>{{ signup.course_id }}</a>
+<li class="list-group-item">{{ signup }}</a>
 {% endfor %}
 </ul>
+{% else %}
+<p>Et ole kirjautunut sisään. Kirjaudu sisään tarkastellaksesi profiilia.</p>
+{% endif %}
 
+</div>
+</div>
 {% endblock %}

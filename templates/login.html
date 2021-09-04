@@ -2,14 +2,36 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
+{% if session.user_id is not defined %}
+<div class="container">
+<div class="col-xs-1" align="center">
+<h2>Kirjaudu sisään</h2>
 <form action="/login" method="POST">
-<p>Tunnus:<br>
-<input type="text" name="username"></p>
-<p>Salasana<br>
-<input type="password" name="password"></p>
-<input type="submit" value="Kirjaudu">
+  <div class="form-group row">
+    <label for="nimi" class="col-form-label">Käyttäjänimi:</label>
+    <div class="col">
+      <input type="text" name="username" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+      <label for="salasana" class="col-form-label">Salasana:</label>
+      <div class="col">
+        <input type="password" class="form-control" name="password">
+      </div>
+    </div>
+  <div class="col">
+  <input type="submit" class="btn btn-primary" value="Kirjaudu">
+  </div>
 </form>
 Voit rekisteröityä <a href="/register">tästä</a>
+</div>
+</div>
+{% else %}
+<div class="container">
+<div class="col-xs-1 align="center">
+<p>Olet jo kirjautunut sisään.</p>
+</div>
+</div>
+{% endif %}
 
 {% endblock %}

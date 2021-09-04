@@ -1,48 +1,49 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
+{% if session.user_id is not defined %}
+<div class="container">
+<div class="col-xs-1" align="center">
 <h2>Rekisteröinti</h2>
-
-<form action="/register" method="post" onsubmit="return check(this)">
-Tunnus: <br><input type="text" name="username" minlength="1" maxlength="20">
-<p>
-Salasana: <br><input type="password" name="password1">
-<p>
-Salasana uudestaan: <br><input type="password" name="password2">
-<p>
-Käyttäjärooli:
-<select name="role">
-<option value=1> oppilas
-<option value=2> opettaja
-</select>
-<p>
-<input type="submit" value="Luo tunnus">
+<form action="/register" method="post">
+  <div class="form-group row">
+    <label for="Tunnus" class="col-form-label">Käyttäjänimi:</label>
+    <div class="col">
+      <input type="text" class="form-control" name="username" minlength="1" maxlength="20">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="salasana" class="col-form-label">Salasana:</label>
+    <div class="col">
+      <input type="password" class="form-control" name="password1" minlength="1" maxlength="20">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="salasana2" class="col-form-label">Salasana uudestaan:</label>
+    <div class="col">
+      <input type="password" class="form-control" name="password2" minlength="1" maxlength="20">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="rooli" class="col-form-label">Käyttäjärooli:</label>
+    <div class="col">
+    <select name="role" class="form-control">
+      <option value=1> oppilas
+      <option value=2> opettaja
+    </select>
+  </div>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Luo tunnus">
 </form>
-
-<p>
-<a href="/login">Palaa takaisin</a>
-
+  <a href="/login">Palaa takaisin</a>
+</div>
+</div>
+{% else %}
+<div class="container">
+<div class="col-xs-1" align="center">
+<p>Kirjaudu ulos rekisteröityäksesi.</p>
+</div>
+</div>
+{% endif %}
 {% endblock %}
 
-<script>
-function check(form) {
-    if (form.username.value.length > 20 {
-        alert("Käyttäjätunnus on liian pitkä.");
-        return false;
-    }
-    if  form.username.value.length < 1 {
-        alert=("Käyttäjätunnus on liian lyhyt.")
-        return false;
-    }
-    if (form.password1.value.length > 20 {
-        alert("Salasana on liian pitkä.");
-        return false;
-    }
-    if (form.password1.value.length < 1) {
-        alert("Salasana on liian lyhyt");
-        return false;
-    }
-    return true;
-}
-</script>

@@ -1,21 +1,28 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
+<div class="container">
+<div class="col-xs-2" align="center">
 <h2>Poista kurssi</h2>
 <form action="/remove" method="post">
-
-<p>Kurssin nimi<br>
-<input type="text" name="name"></p>
-
-<input type="submit" value="Lähetä">
-<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+    <div class="form-group">
+    <label for="kurssinNimi">Kurssin nimi</label>
+    <input type="text" class="form-control" name="name">
+    </div>
+    <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Lähetä">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+    </div>
 </form>
 
-<ul class="listing">
-{% for course in courses %}
-<li><a href="/course/{{ course.id }}">{{ course.name }}</a>
-{% endfor %}
-</ul>
 
+<div class="col">
+  <ul class="list-group">
+  {% for course in courses %}
+    <li class="list-group-item"><a href="/course/{{ course.id }}">{{ course.name }}</a></li>
+  {% endfor %}
+  </ul>
+</div>
+</div>
+</div>
 {% endblock %}
