@@ -1,0 +1,41 @@
+
+.nav-item {
+  border-right: 2em;
+}
+
+
+body {
+  padding-top: 70px;
+  background-color: #D2BE96;
+  font-family: "Helvetica", Sans-Serif;
+}
+
+body .container {
+  background-color: #E3DCC0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  margin-top: 1em;
+}
+
+h1,h2,h3 {
+  border-bottom: dotted 2px green;
+}
+
+body .list-group {
+  border-radius: 12px;
+}
+
+body 
+
+@media screen and (max-width: 768px) {
+body {
+  padding-top: 0px;
+}
+
+
+}
