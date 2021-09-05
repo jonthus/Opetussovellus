@@ -181,7 +181,7 @@ def register():
         if users.register(username, password1, role):
             return redirect("/")
         else:
-            return render_template("error.html", message="Rekisteröinti epäonnistui. Jotain meni rikki!")
+            return render_template("error.html", message="Rekisteröinti epäonnistui. Onko käyttäjä jo olemassa?")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -195,7 +195,7 @@ def login():
     if users.login(username, password):
         return redirect("/")
     else:
-        return render_template("error.html", message="Väärä käyttäjätunnus tai salasana. Kokeile uudestaan.")
+        return render_template("error.html", message="Väärä käyttäjätunnus tai salasana.")
 
 @app.route("/logout")
 def logout():
