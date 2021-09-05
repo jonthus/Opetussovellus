@@ -59,3 +59,25 @@ TO-DO:
 - Profiilisivulle datapointtien lisääminen (esim. %-oikeat vastaukset, kurssilistaus) 
 - Sovelluksen ulkoasun korjaus
 - Tehtävien ratkaisu vain oppilaille
+
+5.9.2021.
+Valmiissa sovelluksessa on toteutettuna seuraavat ominaisuudet:
+- Sisään- ja uloskirjautuminen
+- Rekisteröityminen
+- Kurssien lisääminen (opettajana)
+- Kurssien poistaminen (opettajana)
+- Tehtävien lisääminen (opettajana)
+- Tehtävien poistaminen (opettajana)
+- Tehtävien ratkaiseminen ja vastauksen tarkistus
+- Kursseille liittyminen
+- Kursseilta poistuminen
+- Ulkoasu bootstrapilla
+- Oikean käyttäjäroolin ja csrf tarkistus
+- Profiilisivu, joka päivittyy kurssien ja tehtävien poistamisen/lisäämisen mukaisesti
+
+Sovellus on testattavissa osoitteessa:
+http://opetussovellus.herokuapp.com/
+
+Sovellusta voi parhaiten testata rekisteröitymällä opettajana, kokeilemalla lisätä ja poistaa kursseja, sekä lisätä ja poistaa tehtäviä
+eri kursseille. Kursseille voi myös ilmoittautua ja poistaa ilmoittautumisen. Lisätessä ja poistaessa kursseja ja tehtäviä voi
+seurata profiilisivun päivittymistä.
