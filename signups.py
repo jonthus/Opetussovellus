@@ -24,7 +24,7 @@ def check_signup(user_id, course_id):
         return check
 
 def get_signups(user_id):
-    sql = "SELECT name FROM courses WHERE id IN (SELECT course_id FROM signups WHERE user_id=:user_id)"
+    sql = "SELECT name FROM courses WHERE id IN (SELECT course_id FROM signups INNER JOIN courses ON courses.id=signups.course_id WHERE visible='1' AND signups.user_id=:user_id)"
     list = db.session.execute(sql, {"user_id": user_id}).fetchall()
     return list
 

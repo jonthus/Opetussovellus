@@ -30,10 +30,11 @@ def profile():
 def check_answer():
     exercise_id = request.form["exercise_id"]
     answer = request.form["answer"]
+    course_id = request.form["course_id"]
     user_id = users.get_user()
 
     try:
-        correct = answers.check_answer(exercise_id, user_id, answer)
+        correct = answers.check_answer(exercise_id, user_id, answer, course_id)
         return render_template("result.html", correct=correct, exercise_id=exercise_id)
     except:
         return render_template("error.html", message="Virhe vastausta tarkistettaessa. Jotain meni rikki!")
@@ -45,7 +46,7 @@ def signup():
     course_id = request.form["course_id"]
     try:
         if signups.sign_up(user_id, course_id):
-            return redirect("/")
+            return redirect("/course/" + str(course_id))
     except:
         return render_template("error.html", message="Virhe ilmoittautumisessa. Jotain meni rikki!")
 
@@ -56,7 +57,7 @@ def remove_signup():
     course_id = request.form["course_id"]
     try:
         if signups.remove_signup(user_id, course_id):
-            return redirect("/")
+            return redirect("/course/" + str(course_id))
     except:
         return render_template("error.html", message="Virhe poistamisessa. Jotain meni rikki!")
 
